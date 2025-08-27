@@ -46,11 +46,59 @@
 
 ## 4. Documentación API
 - Accede a la documentación Swagger en `http://localhost:3000/api-docs`.
-- Todas las rutas requieren el header `x-api-key` (ver `.env`).
+- Todas las rutas requieren el header `x-api-key` (ver `config.json`).
 
 ## Notas
-- Si tienes problemas con la conexión a la base de datos, revisa las credenciales y el puerto en `.env` y en el script SQL.
+- Si tienes problemas con la conexión a la base de datos, revisa las credenciales y el puerto en `config.json` y en el script SQL.
 
 
 ---
 ¡Listo para usar! Si tienes dudas, revisa los archivos de configuración o contacta al autor ciro timana.
+
+
+# Instrucciones para correr en Docker
+
+## 1. Prepara la base de datos
+- Asegúrate que el archivo `Script_db.sql` esté en la carpeta `Script_db` en la raíz del proyecto.
+
+## 2. Configura el backend
+- Abre `backend/config.json` y cambia:
+   ```json
+   "DB_HOST": "localhost"
+   ```
+   por:
+   ```json
+   "DB_HOST": "db"
+   ```
+   Esto permite que el backend se conecte al contenedor de la base de datos.
+
+## 3. Levanta los contenedores
+En la raíz del proyecto ejecuta:
+```sh
+docker compose down -v
+docker compose up -d --build
+```
+Esto construye y levanta los servicios:
+- db: PostgreSQL con la base de datos y tablas.
+- backend: API Node.js.
+- frontend: React + Vite.
+
+## 4. Acceso
+- Frontend: http://localhost:5173
+- Backend/API: http://localhost:3000
+- Swagger: http://localhost:3000/api-docs
+
+## 5. Notas
+- Si quieres correr el backend localmente (sin Docker), vuelve a poner `"DB_HOST": "localhost"` en `backend/config.json`.
+- Si tienes problemas con la base de datos, elimina los volúmenes con `docker-compose down -v` y vuelve a levantar todo.
+- El archivo `.env` no es necesario para Docker si usas `config.json`.
+
+---
+Para ver logs de los contenedores:
+```sh
+docker logs <nombre-del-contenedor>
+```
+Por ejemplo:
+```sh
+docker logs proyect-lasirena-backend-1
+```

@@ -44,6 +44,9 @@ const router = require("express").Router();
  *               formato:
  *                 type: string
  *                 example: '2D'
+ *               aforo:
+ *                 type: integer
+ *                 example: 100
  *               estado:
  *                 type: string
  *                 example: 'activo'
@@ -79,6 +82,40 @@ const router = require("express").Router();
  *         required: true
  *         schema:
  *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               inicio:
+ *                 type: string
+ *                 example: '2025-08-30T19:00'
+ *               fin:
+ *                 type: string
+ *                 example: '2025-08-30T21:00'
+ *               sala:
+ *                 type: string
+ *                 example: 'Sala 2'
+ *               precio:
+ *                 type: string
+ *                 example: '5'
+ *               idioma:
+ *                 type: string
+ *                 example: 'dob'
+ *               formato:
+ *                 type: string
+ *                 example: '2D'
+ *               aforo:
+ *                 type: integer
+ *                 example: 100
+ *               estado:
+ *                 type: string
+ *                 example: 'activo'
+ *               pelicula_id:
+ *                 type: string
+ *                 example: '8'
  *     responses:
  *       200:
  *         description: Turno actualizado

@@ -8,6 +8,7 @@ export default function TurnoForm({ turno, peliculaId, onClose }) {
   const [fin, setFin] = useState(turno?.fin?.slice(0,16) || '');
   const [sala, setSala] = useState(turno?.sala || '');
   const [precio, setPrecio] = useState(turno?.precio || 0);
+  const [aforo, setAforo] = useState(turno?.aforo || '');
   const [idioma, setIdioma] = useState(turno?.idioma || 'dob');
   const [formato, setFormato] = useState(turno?.formato || '2D');
   const [estado, setEstado] = useState(turno?.estado || 'activo');
@@ -20,7 +21,7 @@ export default function TurnoForm({ turno, peliculaId, onClose }) {
     try {
       // buscar por id
       const pelicula_id = typeof peliculaId === 'object' ? peliculaId.id : peliculaId;
-      const data = { inicio, fin, sala, precio, idioma, formato, estado, pelicula_id };
+  const data = { inicio, fin, sala, precio, aforo, idioma, formato, estado, pelicula_id };
       if (turno) {
         await updateTurno(turno.id, data);
         Swal.fire('¡Actualizado!', 'Turno actualizado correctamente', 'success');
@@ -109,6 +110,19 @@ export default function TurnoForm({ turno, peliculaId, onClose }) {
               onChange={e => setPrecio(e.target.value)}
               required
               placeholder="Precio del turno"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="aforo">Aforo *</label>
+            <input
+              id="aforo"
+              type="number"
+              min="1"
+              step="1"
+              value={aforo}
+              onChange={e => setAforo(e.target.value)}
+              required
+              placeholder="Cantidad máxima de personas"
             />
           </div>
           <div className="form-group">

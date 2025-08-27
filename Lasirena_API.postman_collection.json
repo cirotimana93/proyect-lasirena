@@ -1,0 +1,188 @@
+{
+  "info": {
+    "_postman_id": "b7e2e7e2-2025-4a27-9c25-lasirena-api",
+    "name": "Lasirena API",
+    "description": "Colección de endpoints para el backend de Lasirena (películas y turnos)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Películas",
+      "item": [
+        {
+          "name": "Obtener todas las películas",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" }
+            ],
+            "url": { "raw": "http://localhost:3000/api/peliculas", "host": ["http://localhost:3000"], "path": ["api", "peliculas"] }
+          }
+        },
+        {
+          "name": "Crear película",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Shrek 5\",\n  \"fecha_estreno\": \"2025-08-15\",\n  \"estado\": \"activo\",\n  \"sinopsis\": \"La saga Sigue\",\n  \"duracion_min\": 120,\n  \"clasificacion\": \"A\",\n  \"generos\": \"Infantil\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/peliculas", "host": ["http://localhost:3000"], "path": ["api", "peliculas"] }
+          }
+        },
+        {
+          "name": "Obtener película por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" }
+            ],
+            "url": { "raw": "http://localhost:3000/api/peliculas/:id", "host": ["http://localhost:3000"], "path": ["api", "peliculas", ":id"] }
+          }
+        },
+        {
+          "name": "Actualizar película",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Shrek 5\",\n  \"fecha_estreno\": \"2025-08-15\",\n  \"estado\": \"activo\",\n  \"sinopsis\": \"La saga Sigue\",\n  \"duracion_min\": 120,\n  \"clasificacion\": \"A\",\n  \"generos\": \"Infantil\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/peliculas/:id", "host": ["http://localhost:3000"], "path": ["api", "peliculas", ":id"] }
+          }
+        },
+        {
+          "name": "Actualizar parcialmente película",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"inactivo\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/peliculas/:id", "host": ["http://localhost:3000"], "path": ["api", "peliculas", ":id"] }
+          }
+        },
+        {
+          "name": "Eliminar película",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" }
+            ],
+            "url": { "raw": "http://localhost:3000/api/peliculas/:id", "host": ["http://localhost:3000"], "path": ["api", "peliculas", ":id"] }
+          }
+        },
+        {
+          "name": "Crear turnos en lote para película",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"inicio\": \"2025-08-30T19:00\",\n    \"fin\": \"2025-08-30T21:00\",\n    \"sala\": \"Sala 2\",\n    \"precio\": \"5\",\n    \"idioma\": \"dob\",\n    \"formato\": \"2D\",\n    \"aforo\": 100,\n    \"estado\": \"activo\"\n  }\n]"
+            },
+            "url": { "raw": "http://localhost:3000/api/peliculas/:id/turnos:bulkCreate", "host": ["http://localhost:3000"], "path": ["api", "peliculas", ":id", "turnos:bulkCreate"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Turnos",
+      "item": [
+        {
+          "name": "Obtener todos los turnos",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" }
+            ],
+            "url": { "raw": "http://localhost:3000/api/turnos", "host": ["http://localhost:3000"], "path": ["api", "turnos"] }
+          }
+        },
+        {
+          "name": "Crear turno",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inicio\": \"2025-08-30T19:00\",\n  \"fin\": \"2025-08-30T21:00\",\n  \"sala\": \"Sala 2\",\n  \"precio\": \"5\",\n  \"idioma\": \"dob\",\n  \"formato\": \"2D\",\n  \"aforo\": 100,\n  \"estado\": \"activo\",\n  \"pelicula_id\": \"8\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/turnos", "host": ["http://localhost:3000"], "path": ["api", "turnos"] }
+          }
+        },
+        {
+          "name": "Obtener turno por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" }
+            ],
+            "url": { "raw": "http://localhost:3000/api/turnos/:id", "host": ["http://localhost:3000"], "path": ["api", "turnos", ":id"] }
+          }
+        },
+        {
+          "name": "Actualizar turno",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inicio\": \"2025-08-30T19:00\",\n  \"fin\": \"2025-08-30T21:00\",\n  \"sala\": \"Sala 2\",\n  \"precio\": \"5\",\n  \"idioma\": \"dob\",\n  \"formato\": \"2D\",\n  \"aforo\": 100,\n  \"estado\": \"activo\",\n  \"pelicula_id\": \"8\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/turnos/:id", "host": ["http://localhost:3000"], "path": ["api", "turnos", ":id"] }
+          }
+        },
+        {
+          "name": "Actualizar parcialmente turno",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"inactivo\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/turnos/:id", "host": ["http://localhost:3000"], "path": ["api", "turnos", ":id"] }
+          }
+        },
+        {
+          "name": "Eliminar turno",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "x-api-key", "value": "TU_API_KEY", "type": "text" }
+            ],
+            "url": { "raw": "http://localhost:3000/api/turnos/:id", "host": ["http://localhost:3000"], "path": ["api", "turnos", ":id"] }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000" }
+  ]
+}

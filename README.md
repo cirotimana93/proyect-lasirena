@@ -1,4 +1,4 @@
-# Proyecto Lasirena
+# Proyecto Lasirena v1
 
 ## Requisitos previos
 - Node.js v18+ y npm
